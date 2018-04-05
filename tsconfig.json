@@ -3,19 +3,18 @@
     "module": "commonjs",
     "target": "ES5",
     "sourceMap": true,
-    "outDir": "server/build",
+    "outDir": "build",
     "noImplicitAny": true,
     "removeComments": true
   },
   "awesomeTypescriptLoaderOptions": {
   },
   "include": [
-    "./server/src/**/*.ts",
-    "./server/src/**/*.tsx"
+    "./src/**/*.ts",
+    "./src/**/*.tsx"
   ],
   "exclude": [
     "node_modules",
-    "server/node_modules",
-    "server/build"
+    "build"
   ]
 }

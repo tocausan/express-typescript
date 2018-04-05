@@ -1,0 +1,20 @@
+{
+  "compilerOptions": {
+    "module": "commonjs",
+    "target": "ES6",
+    "sourceMap": true,
+    "outDir": "server/build",
+    "noImplicitAny": true,
+    "removeComments": true
+  },
+  "awesomeTypescriptLoaderOptions": {
+  },
+  "include": [
+    "./server/src/**/*.ts",
+    "./server/src/**/*.tsx"
+  ],
+  "exclude": [
+    "node_modules",
+    "server/build"
+  ]
+}

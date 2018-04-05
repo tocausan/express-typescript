@@ -1,6 +1,6 @@
 import * as debug from 'debug';
 import * as http from 'http';
-import App from '../app';
+import {App} from '../app';
 import {Config} from "../config";
 
 

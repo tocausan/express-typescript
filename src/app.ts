@@ -1,5 +1,6 @@
 import * as express from 'express';
 import * as path from 'path';
+import * as bodyParser from "body-parser";
 import * as cookieParser from 'cookie-parser';
 import * as logger from 'morgan';
 import * as httpErrors from 'http-errors';
@@ -14,6 +15,8 @@ export const App = express()
     .use(logger(Config.environment))
     .use(express.json())
     .use(express.urlencoded({extended: false}))
+    .use(bodyParser.json())
+    .use(bodyParser.urlencoded({extended: false}))
     .use(cookieParser())
     .use(express.static(path.join(__dirname, 'public')))
 

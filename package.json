@@ -3,11 +3,12 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "start": "node ./server/build/bin/www",
-    "build": "npm i && tsc"
+    "start": "node ./build/bin/www",
+    "build": "npm i && tsc",
+    "build:watch": "npm i && tsc --watch"
   },
   "description": "ExpressJs generated seed in Typescript and connected to MongoDb",
-  "main": "./server/build/bin/www",
+  "main": "./build/bin/www",
   "repository": {
     "type": "git",
     "url": "git+ssh://git@github.com/tocausan/express-typescript-mongodb-seed.git"
@@ -24,21 +25,18 @@
   },
   "homepage": "https://github.com/tocausan/express-typescript-mongodb-seed#readme",
   "dependencies": {
-    "cookie-parser": "~1.4.3",
-    "debug": "~2.6.9",
-    "express": "~4.16.0",
-    "http-errors": "~1.6.2",
-    "jade": "~1.11.0",
-    "morgan": "~1.9.0"
+    "express": "^4.16.3"
   },
   "devDependencies": {
     "@types/cookie-parser": "^1.4.1",
     "@types/debug": "0.0.30",
     "@types/express": "^4.11.1",
     "@types/http-errors": "^1.6.1",
+    "@types/jade": "0.0.30",
     "@types/morgan": "^1.7.35",
     "@types/node": "^9.6.2",
     "http": "0.0.0",
-    "process": "^0.11.10"
+    "process": "^0.11.10",
+    "rimraf": "^2.6.2"
   }
 }

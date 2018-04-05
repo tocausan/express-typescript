@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
     "module": "commonjs",
-    "target": "ES6",
+    "target": "ES5",
     "sourceMap": true,
     "outDir": "server/build",
     "noImplicitAny": true,
@@ -15,6 +15,7 @@
   ],
   "exclude": [
     "node_modules",
+    "server/node_modules",
     "server/build"
   ]
 }

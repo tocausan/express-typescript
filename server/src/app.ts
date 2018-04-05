@@ -5,7 +5,7 @@ import * as logger from 'morgan';
 import * as httpErrors from 'http-errors';
 import {Config} from "./config";
 import {Routes} from './routes';
-import {NextFunction, Request, Response} from "express";
+import {Request, Response, NextFunction} from "express";
 
 export const App = express()
     .set('views', path.join(__dirname, 'views'))

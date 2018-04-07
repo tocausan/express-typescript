@@ -1,10 +1,12 @@
 import {Router, Request, Response, NextFunction} from 'express';
 import {UserRoutes} from "./users";
+import {ErrorRoutes} from "./errors";
 
 export const Routes = Router()
 
     .get('/', (req: Request, res: Response, next: NextFunction) => {
-        res.render('index', {title: 'Express'});
+        res.json('index');
     })
 
-    .get('/users', UserRoutes);
+    .use('/users', UserRoutes)
+    .use(ErrorRoutes);

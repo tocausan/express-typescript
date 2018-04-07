@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
     "module": "commonjs",
-    "target": "ES5",
+    "target": "ES6",
     "sourceMap": true,
     "outDir": "build",
     "noImplicitAny": true,
@@ -10,8 +10,7 @@
   "awesomeTypescriptLoaderOptions": {
   },
   "include": [
-    "./src/**/*.ts",
-    "./src/**/*.tsx"
+    "./src/**/*.ts"
   ],
   "exclude": [
     "node_modules",

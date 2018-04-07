@@ -1,70 +1,60 @@
 const gulp = require('gulp'),
-    rimraf = require('gulp-rimraf'),
     ignore = require('gulp-ignore'),
-    scss = require('gulp-scss'),
-    ejs = require("gulp-ejs")
+    sass = require('gulp-sass'),
     refresh = require('gulp-livereload'),
     lr = require('tiny-lr'),
     server = lr(),
     minifyCSS = require('gulp-minify-css'),
-    embedlr = require('gulp-embedlr'),
-    ts = require("gulp-typescript"),
-    tsProject = ts.createProject("tsconfig.json");
+    tsProject = require("gulp-typescript").createProject("tsconfig.json");
 
 const path = {
     src: 'src',
     build: 'build'
 };
 
-// rimraf build
-gulp.task('rimraf', () => {
-    return gulp.src([path.build], {read: false})
-        .pipe(ignore('node_modules/**'))
-        .pipe(rimraf());
-});
-
 // complile typescript
 gulp.task('compile', () => {
-    gulp.src([path.src + '/**/*.ts'])
+    // TS
+    gulp.src(path.src + '/**/*.ts')
         .pipe(tsProject())
-        .js.pipe(gulp.dest(path.build))
+        .js
+        .pipe(gulp.dest(path.build))
+        .pipe(refresh(server));
+
+    // JS
+    gulp.src(path.src + '/**/*.js')
+        .pipe(gulp.dest(path.build))
+        .pipe(refresh(server));
 });
 
 // public style
 gulp.task('style', () => {
-    gulp.src([path.src + '/public/**/*.css', path.src + '/public/**/*.scss'])
-        .pipe(scss({"bundleExec": true}))
+    // SCSS
+    gulp.src([path.src + '/**/*.scss', path.src + '/**/*.css'])
+        .pipe(sass().on('error', sass.logError))
         .pipe(minifyCSS())
-        .pipe(gulp.dest(path.build + '/public'))
+        .pipe(gulp.dest(path.build))
         .pipe(refresh(server));
 });
 
 // views template
 gulp.task('template', () => {
-    gulp.src(["**/*.ejs","**/*.html"])
-        .pipe(ejs())
+    gulp.src([path.src + '/**/*.html', path.src + '/**/*.ejs'])
         .pipe(gulp.dest(path.build))
         .pipe(refresh(server));
 });
 
-gulp.task('copy', ['clean'], () => {
-    return gulp.src([path.src + '/public/**/*'])
+gulp.task('media', () => {
+    gulp.src([path.src + '/**/*.jpg', path.src + '/**/*.png'])
         .pipe(gulp.dest(path.build));
 });
 
-gulp.task('default', ['rimraf', 'compile'], () => {
-
-    console.log('gulped and watching');
+gulp.task('default', ['compile', 'template', 'style', 'media'], () => {
 
     gulp.watch(path.src + '/**', () => {
-        gulp.run('compile');
-    });
-
-    gulp.watch(path.src + '/public/**', () => {
-        gulp.run('style');
-    });
-
-    gulp.watch(path.src + '/views/**', () => {
+        //gulp.run('compile');
         gulp.run('template');
+        gulp.run('style');
+        gulp.run('media');
     });
 });

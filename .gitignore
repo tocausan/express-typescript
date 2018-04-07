@@ -1,6 +1,6 @@
+.gulp*
 .idea
 */.idea
 package-lock.json
-node_modules/*
-server/dist/*
-server/build/*
+node_modules
+build/*

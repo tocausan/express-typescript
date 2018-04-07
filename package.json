@@ -41,6 +41,7 @@
     "clean-webpack-plugin": "^0.1.19",
     "concurrently": "^3.5.1",
     "gulp": "^3.9.1",
+    "gulp-ejs": "^3.1.2",
     "gulp-embedlr": "^0.5.2",
     "gulp-ignore": "^2.0.2",
     "gulp-livereload": "^3.8.1",

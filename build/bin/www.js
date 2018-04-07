@@ -1,17 +1,18 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-const debug = require("debug");
-const http = require("http");
-const app_1 = require("../app");
-const config_1 = require("../config");
-const port = normalizePort(process.env.PORT || config_1.Config.server.port);
+var debug = require("debug");
+var http = require("http");
+var app_1 = require("../app");
+var config_1 = require("../config");
+var port = normalizePort(process.env.PORT || config_1.Config.server.port);
 app_1.App.set('port', port);
-const server = http.createServer(app_1.App)
+console.log('Listening on port ' + port);
+var server = http.createServer(app_1.App)
     .listen(port)
     .on('error', onError)
     .on('listening', onListening);
 function normalizePort(val) {
-    const port = parseInt(val, 10);
+    var port = parseInt(val, 10);
     if (isNaN(port))
         return val;
     if (port >= 0)
@@ -21,7 +22,7 @@ function normalizePort(val) {
 function onError(error) {
     if (error.syscall !== 'listen')
         throw error;
-    const bind = typeof port === 'string'
+    var bind = typeof port === 'string'
         ? 'Pipe ' + port
         : 'Port ' + port;
     switch (error.code) {
@@ -38,8 +39,8 @@ function onError(error) {
     }
 }
 function onListening() {
-    const addr = server.address();
-    const bind = typeof addr === 'string'
+    var addr = server.address();
+    var bind = typeof addr === 'string'
         ? 'pipe ' + addr
         : 'port ' + addr.port;
     debug('Listening on ' + bind);

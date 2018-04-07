@@ -2,6 +2,7 @@ const gulp = require('gulp'),
     rimraf = require('gulp-rimraf'),
     ignore = require('gulp-ignore'),
     scss = require('gulp-scss'),
+    ejs = require("gulp-ejs")
     refresh = require('gulp-livereload'),
     lr = require('tiny-lr'),
     server = lr(),
@@ -22,6 +23,7 @@ gulp.task('rimraf', () => {
         .pipe(rimraf());
 });
 
+// complile typescript
 gulp.task('compile', () => {
     gulp.src([path.src + '/**/*.ts'])
         .pipe(tsProject())
@@ -39,9 +41,8 @@ gulp.task('style', () => {
 
 // views template
 gulp.task('template', () => {
-    gulp.src("**/*.jade")
-        .pipe(jade())
-        .pipe(embedlr())
+    gulp.src(["**/*.ejs","**/*.html"])
+        .pipe(ejs())
         .pipe(gulp.dest(path.build))
         .pipe(refresh(server));
 });

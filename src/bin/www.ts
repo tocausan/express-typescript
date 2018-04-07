@@ -7,6 +7,7 @@ import {Config} from "../config";
 // Get port from environment and store in Express.
 const port = normalizePort(process.env.PORT || Config.server.port);
 App.set('port', port);
+console.log('Listening on port ' + port);
 
 // Create HTTP server.
 const server = http.createServer(App)

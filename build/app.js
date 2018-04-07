@@ -1,12 +1,12 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-const express = require("express");
-const path = require("path");
-const bodyParser = require("body-parser");
-const cookieParser = require("cookie-parser");
-const logger = require("morgan");
-const config_1 = require("./config");
-const routes_1 = require("./routes");
+var express = require("express");
+var path = require("path");
+var bodyParser = require("body-parser");
+var cookieParser = require("cookie-parser");
+var logger = require("morgan");
+var config_1 = require("./config");
+var routes_1 = require("./routes");
 exports.App = express()
     .set('views', path.join(__dirname, 'views'))
     .set('view engine', 'ejs')
